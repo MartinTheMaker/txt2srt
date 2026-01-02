@@ -110,23 +110,6 @@ python txt2srt.py lyrics.txt lyrics.srt --gap 0.3
 | `--offset` | Startversatz vor dem ersten Block | `0.0` |
 | `--gap` | Pause zwischen Blocks | `0.0` |
 
----
-
-## 🎬 Empfohlener DaVinci-Resolve-Workflow
-
-1. SRT importieren  
-2. Subtitle-Track → **Convert to Text+**
-3. Pro Clip:
-   - Fade In: `0,2–0,4 s`
-   - Fade Out: `0,2–0,4 s`
-4. Pausen **visuell ziehen**, nicht im SRT erzwingen
-5. Längen nach Gefühl an Musik anpassen
-
----
-
-## 🧠 Design-Philosophie (opinionated)
-
-Dieses Tool nimmt dir **Routinearbeit ab**, nicht die kreative Entscheidung.
 
 ---
 
