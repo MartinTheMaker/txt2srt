@@ -1,67 +1,68 @@
 # txt2srt – Opinionated Lyrics → SRT Converter
 
-Ein minimaler Python-Converter, um **Lyrics aus einer `.txt`-Datei** schnell in eine **`.srt`-Subtitle-Datei** zu verwandeln.
+A minimal Python converter to quickly turn **lyrics from a `.txt` file** into a **`.srt` subtitle file**.
 
-**Design-Ziel:**  
-Einfach, reproduzierbar, perfekt für **Lyric-Videos** (z. B. DaVinci Resolve), bei denen **Timing und Pausen später manuell feinjustiert** werden.
+**Design goal:**  
+Simple, reproducible, and perfect for **lyric videos** (e.g. DaVinci Resolve), where **timing and pauses are fine-tuned manually later**.
 
 ---
 
 ## ✨ Features
 
-- ✅ TXT → SRT Konvertierung
-- ✅ **Eine Zeile = ein Subtitle-Block**
-- ✅ Option: **Absätze = Blöcke**
-- ✅ **Konstante Dauer pro Block** (z. B. 3 oder 5 Sekunden)
-- ✅ Optionaler Start-Offset & Pausen zwischen Blöcken
-- ✅ UTF-8 kompatibel (Umlaute, Sonderzeichen)
-- ✅ Keine externen Dependencies
+- ✅ TXT → SRT conversion  
+- ✅ **One line = one subtitle block**  
+- ✅ Optional: **paragraphs = blocks**  
+- ✅ **Constant duration per block** (e.g. 3 or 5 seconds)  
+- ✅ Optional start offset & gaps between blocks  
+- ✅ UTF-8 compatible (umlauts, special characters)  
+- ✅ No external dependencies  
 
 ---
 
-## 📄 Input-Format
+## 📄 Input Format
 
-### Standard (empfohlen)
-**Eine Zeile = ein Subtitle-Block**
+### Standard (recommended)
+**One line = one subtitle block**
 
 ```txt
-Ich steh auf, ohne Ziel für den Tag,
-mach, was man macht, weil man’s so macht.
-Ich kenn meine Wege, sie tragen mich weit,
-aber keiner davon fühlt sich nach mir an.
-```
+I get up without a goal for the day,
+do what you do because that’s how it’s done.
+I know my paths, they carry me far,
+but none of them feel like they’re really mine.
+````
 
-Leerzeilen werden ignoriert.
+Empty lines are ignored.
 
 ---
 
-### Absatz-Modus (optional)
-**Mehrere Zeilen = ein Block, Leerzeile = Block-Trenner**
+### Paragraph Mode (optional)
+
+**Multiple lines = one block, empty line = block separator**
 
 ```txt
-Ich steh auf, ohne Ziel für den Tag,
-mach, was man macht, weil man’s so macht.
+I get up without a goal for the day,
+do what you do because that’s how it’s done.
 
-Ich kenn meine Wege, sie tragen mich weit,
-aber keiner davon fühlt sich nach mir an.
+I know my paths, they carry me far,
+but none of them feel like they’re really mine.
 ```
 
 ---
 
-## ▶️ Nutzung / CLI-Befehle
+## ▶️ Usage / CLI Commands
 
-Allgemeiner Aufruf:
+General usage:
 
 ```bash
-python txt2srt.py <input.txt> <output.srt> [optionen]
+python txt2srt.py <input.txt> <output.srt> [options]
 ```
 
 ---
 
-### 🔹 Einfachster Anwendungsfall (Standard)
+### 🔹 Simplest Use Case (Standard)
 
-- eine Zeile = ein Subtitle-Block  
-- 3 Sekunden Dauer pro Block  
+* one line = one subtitle block
+* 3 seconds duration per block
 
 ```bash
 python txt2srt.py lyrics.txt lyrics.srt
@@ -69,7 +70,7 @@ python txt2srt.py lyrics.txt lyrics.srt
 
 ---
 
-### 🔹 Blocklänge ändern (z. B. 5 Sekunden)
+### 🔹 Change Block Duration (e.g. 5 seconds)
 
 ```bash
 python txt2srt.py lyrics.txt lyrics.srt --seconds 5
@@ -77,7 +78,7 @@ python txt2srt.py lyrics.txt lyrics.srt --seconds 5
 
 ---
 
-### 🔹 Absatz-Modus verwenden
+### 🔹 Use Paragraph Mode
 
 ```bash
 python txt2srt.py lyrics.txt lyrics.srt --mode paragraph
@@ -85,7 +86,7 @@ python txt2srt.py lyrics.txt lyrics.srt --mode paragraph
 
 ---
 
-### 🔹 Start-Offset setzen (z. B. Intro ohne Text)
+### 🔹 Set a Start Offset (e.g. intro without text)
 
 ```bash
 python txt2srt.py lyrics.txt lyrics.srt --offset 1.5
@@ -93,7 +94,7 @@ python txt2srt.py lyrics.txt lyrics.srt --offset 1.5
 
 ---
 
-### 🔹 Feste Pause zwischen Blöcken einfügen
+### 🔹 Insert a Fixed Gap Between Blocks
 
 ```bash
 python txt2srt.py lyrics.txt lyrics.srt --gap 0.3
@@ -101,18 +102,17 @@ python txt2srt.py lyrics.txt lyrics.srt --gap 0.3
 
 ---
 
-## ⚙️ Optionen im Überblick
+## ⚙️ Options Overview
 
-| Option | Beschreibung | Default |
-|------|-------------|---------|
-| `--seconds` | Dauer pro Subtitle-Block (Sekunden) | `3.0` |
-| `--mode` | `line` oder `paragraph` | `line` |
-| `--offset` | Startversatz vor dem ersten Block | `0.0` |
-| `--gap` | Pause zwischen Blocks | `0.0` |
-
+| Option      | Description                           | Default |
+| ----------- | ------------------------------------- | ------- |
+| `--seconds` | Duration per subtitle block (seconds) | `3.0`   |
+| `--mode`    | `line` or `paragraph`                 | `line`  |
+| `--offset`  | Start offset before the first block   | `0.0`   |
+| `--gap`     | Pause between blocks                  | `0.0`   |
 
 ---
 
-## 📝 Lizenz
+## 📝 License
 
 MIT License
